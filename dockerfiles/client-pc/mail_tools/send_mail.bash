@@ -25,8 +25,8 @@ show_overview() {
 
 show_package_status() {
     # calculate percentage
-    local sent_percentage=$(bc <<<"scale=1; $eml_files_sent / $eml_files_total * 100")
-    local rejected_percentage=$(bc <<<"scale=1; $eml_files_rejected / $eml_files_total * 100")
+    local sent_percentage=$(bc <<<"scale=1; $eml_files_sent * 100 / $eml_files_total")
+    local rejected_percentage=$(bc <<<"scale=1; $eml_files_rejected * 100 / $eml_files_total")
     
     # print counters
     echo "=============== PACKAGE #$i ==============="
@@ -69,7 +69,7 @@ for package in $mail_directory_formatted/* ; do
         swaks \
             --silent 3 \
             --to $mail_to \
-            --from temp@temp.temp \
+            --from package_$i@antispam.test.suite \
             --server $mail_server \
             --data $eml_file && \
             let rejected_flag=0  # if swaks return zero code, the message was accepted
