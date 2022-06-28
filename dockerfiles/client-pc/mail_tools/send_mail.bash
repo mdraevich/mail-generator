@@ -18,6 +18,7 @@ show_overview() {
     echo "-> mail_directory: $mail_directory_formatted"
     echo "-> mail_directory (packages): $mail_directory_size"
     echo "-> mail_to: $mail_to"
+    echo "-> mail_from: *@antispam.test.suite"
     echo "-> mail_server: $mail_server"
     echo "=========================================="
     echo ""
