@@ -16,7 +16,7 @@ check_args() {
 show_overview() {
     echo "================ Overview ================"
     echo "-> mail_directory: $mail_directory_formatted"
-    echo "-> mail_directory (size): $mail_directory_size"
+    echo "-> mail_directory (packages): $mail_directory_size"
     echo "-> mail_to: $mail_to"
     echo "-> mail_server: $mail_server"
     echo "=========================================="
@@ -71,6 +71,8 @@ for package in $mail_directory_formatted/* ; do
             --to $mail_to \
             --from package_$i@antispam.test.suite \
             --server $mail_server \
+            --header "To: <$mail_to>" \
+            --header "From: <package_$i@antispam.test.suite>" \
             --data $eml_file && \
             let rejected_flag=0  # if swaks return zero code, the message was accepted
 
