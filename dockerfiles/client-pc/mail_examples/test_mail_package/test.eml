@@ -1,40 +1,25 @@
-Return-Path: <test@solidex.by>
-Delivered-To: mdraevich@solidex.by
-Received: from meridian.solidex.by ([fd4d:6169:6c63:6f77::b])
-	by d4b40c423c11 with LMTP
-	id CCddCn+cuWKsNwgAAd+rEw
-	(envelope-from <test@solidex.by>)
-	for <mdraevich@solidex.by>; Mon, 27 Jun 2022 15:03:11 +0300
-Received: from 62fd0ed0250c (unknown [172.17.17.102])
-	by meridian.solidex.by (Postcow) with ESMTP id 13907400309
-	for <mdraevich@solidex.by>; Mon, 27 Jun 2022 15:03:11 +0300 (+03)
-Date: Mon, 27 Jun 2022 12:03:11 +0000
-To: mdraevich@solidex.by
-From: test@solidex.by
-Subject: test Mon, 27 Jun 2022 12:03:11 +0000
-Message-Id: <20220627120311.000454@62fd0ed0250c>
-X-Mailer: swaks v20190914.0 jetmore.org/john/code/swaks/
-X-Last-TLS-Session-Version: None
-X-Spamd-Result: default: False [-11.00 / 15.00];
-	 ARC_NA(0.00)[];
-	 TO_MATCH_ENVRCPT_ALL(0.00)[];
-	 NEURAL_HAM_LONG(-4.00)[-1.000];
-	 MIME_GOOD(-0.10)[text/plain];
-	 TO_DN_NONE(0.00)[];
-	 RCPT_COUNT_ONE(0.00)[1];
-	 MAILCOW_DOMAIN_HEADER_FROM(0.00)[solidex.by];
-	 NEURAL_HAM_SHORT(-2.00)[-1.000];
-	 FROM_NO_DN(0.00)[];
-	 RCVD_COUNT_ZERO(0.00)[0];
-	 FROM_EQ_ENVFROM(0.00)[];
-	 MIME_TRACE(0.00)[0:+];
-	 MID_RHS_NOT_FQDN(0.50)[];
-	 RCPT_MAILCOW_DOMAIN(0.00)[solidex.by];
-	 BAYES_HAM(-5.40)[99.78%];
-	 TO_DOM_EQ_FROM_DOM(0.00)[]
-X-Rspamd-Queue-Id: 13907400309
-Authentication-Results: meridian.solidex.by;
-	none
+Received: from 192.168.1.100 ([65.202.85.3]) by pacific-carrier-annex.mit.edu
+          (8.9.2/8.9.2) with SMTP id AAA06179;
+          Mon, 11 Jun 2001 00:39:32 -0400 (EDT)
+From: [some forged email address]
+Message-ID: <200106110439.AAA06179@pacific-carrier-annex.mit.edu>
+Subject: I am as shocked as you!
+Date: Sun, 10 Jun 01 00:32:35 Pacific Daylight Time
+X-Priority: 3
+X-MSMailPriority: Normal
+Importance: Normal
+MIME-Version: 1.0
+Content-Type: multipart/mixed;
+              boundary="----=_NextPart_000_018C_01BD9940.715D52A0"
 
-This is a test mailing
+<HTML>
+<BODY>
 
+<FONT face="MS Sans Serif">
+<FONT size=2> <BR>
+<BR>
+Some of the most beautiful women in the world bare it all for you.Denise Richard
+s, Britney  Spears, Jessica Simpson, and many more.<A HREF="http://216.130.166.1
+88/index.html">CLICK HERE FOR NUDE CELEBS<A/><BR>
+<BR>
+</FONT></FONT></BODY></HTML>
