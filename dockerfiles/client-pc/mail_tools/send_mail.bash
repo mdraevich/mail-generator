@@ -13,6 +13,29 @@ check_args() {
     [ ! -d "$mail_directory_unformatted" ] && echo "<mail_directory> doesn't exist" && exit
 }
 
+show_overview() {
+    echo "================ Overview ================"
+    echo "-> mail_directory: $mail_directory_formatted"
+    echo "-> mail_directory (size): $mail_directory_size"
+    echo "-> mail_to: $2"
+    echo "-> mail_server: $3"
+    echo "=========================================="
+    echo ""
+}
+
+show_package_status() {
+    # calculate percentage
+    local sent_percentage=$(bc <<<"scale=1; $eml_files_sent / $eml_files_total * 100")
+    local rejected_percentage=$(bc <<<"scale=1; $eml_files_rejected / $eml_files_total * 100")
+    
+    # print counters
+    echo "=============== PACKAGE #$i ==============="
+    echo "-> package_name: $(basename $package)"
+    echo "-> mail sent/total: $eml_files_sent/$eml_files_total   ($sent_percentage%)"
+    echo "-> mail rejected/total: $eml_files_rejected/$eml_files_total   ($rejected_percentage%)"
+    echo ""
+}
+
 mail_directory_unformatted=$1
 mail_to=$2
 mail_server=$3
@@ -22,28 +45,47 @@ check_args  # run a function
 mail_directory_formatted=$(realpath $mail_directory_unformatted)
 let mail_directory_size=$(find $mail_directory_formatted -maxdepth 1 -type d | wc -l)-1
 
-echo "============ Overview ============"
-echo "-> mail_directory: $mail_directory_formatted"
-echo "-> mail_directory (size): $mail_directory_size"
-echo "-> mail_to: $2"
-echo "-> mail_server: $3"
-echo "=================================="
-echo ""
-
+show_overview  # run a function
 read -p "Do you want to start? [Confirm]" yes
 
 i=0
-for d in $mail_directory_formatted/* ; do
+for package in $mail_directory_formatted/* ; do
     let i=i+1  # increment test number
 
+    # list of files to send
+    eml_files=$(find $package -maxdepth 1 -type f)
+    
+    # counters for reporting
+    eml_files_total=$(echo "$eml_files" | wc -l)
+    eml_files_sent=0
+    eml_files_rejected=0
+
+    show_package_status  # run a function
+
+    for eml_file in $eml_files ; do
+        let rejected_flag=1
+
+        # send eml file
+        swaks \
+            --silent 3 \
+            --to $mail_to \
+            --from temp@temp.temp \
+            --server $mail_server \
+            --data $eml_file && \
+            let rejected_flag=0  # if swaks return zero code, the message was accepted
+
+        # update counters
+        let eml_files_sent+=1
+        let eml_files_rejected+=$rejected_flag
+
+        # clear display
+        printf "\033[5A"
+
+        show_package_status  # run a function
+    done
 
 
-    echo "=============== PACKAGE #$i ==============="
-    echo "-> package_name: $(basename $d)"
-    echo "-> mail sent/total: 0/0   (100%)"
-    echo "-> mail rejected/total: 0/0   (100%)"
-    echo "=================================="
-    sleep 1
+
 
 done
 
