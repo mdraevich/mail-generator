@@ -17,8 +17,8 @@ show_overview() {
     echo "================ Overview ================"
     echo "-> mail_directory: $mail_directory_formatted"
     echo "-> mail_directory (size): $mail_directory_size"
-    echo "-> mail_to: $2"
-    echo "-> mail_server: $3"
+    echo "-> mail_to: $mail_to"
+    echo "-> mail_server: $mail_server"
     echo "=========================================="
     echo ""
 }
