@@ -20,7 +20,7 @@ mail_server=$3
 check_args  # run a function
 
 mail_directory_formatted=$(realpath $mail_directory_unformatted)
-let mail_directory_size=$(find $full_path -maxdepth 1 -type d | wc -l)-1
+let mail_directory_size=$(find $mail_directory_formatted -maxdepth 1 -type d | wc -l)-1
 
 echo "============ Overview ============"
 echo "-> mail_directory: $mail_directory_formatted"
@@ -33,11 +33,17 @@ echo ""
 read -p "Do you want to start? [Confirm]" yes
 
 i=0
-for d in $1*/ ; do
+for d in $mail_directory_formatted/* ; do
     let i=i+1  # increment test number
-    echo "=============== TEST #$i ==============="
-    echo "-> mail_package: $d"
+
+
+
+    echo "=============== PACKAGE #$i ==============="
+    echo "-> package_name: $(basename $d)"
+    echo "-> mail sent/total: 0/0   (100%)"
+    echo "-> mail rejected/total: 0/0   (100%)"
     echo "=================================="
+    sleep 1
 
 done
 
