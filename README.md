@@ -8,7 +8,10 @@ The goal of the project is to provide an automate way to send a bunch of `*.eml`
 ## How to use
 1. Execute the following:
 ```
-docker run -v </path/to/mail>:~/mail_examples/your_package:ro -it drmatthew/mail-generator:latest ./mail_tools/send_mail.bash ./mail_examples/ <mail_to> <mail_server>
+docker run \
+    -v </path/to/mail>:/home/user/mail_examples/your_package:ro \
+    -it drmatthew/mail-generator:latest \
+    ./mail_tools/send_mail.bash ./mail_examples/ <mail_to> <mail_server>
 ```
 
 where:
@@ -27,7 +30,7 @@ matvey@matvey-pc:~$ docker run --rm -it drmatthew/mail-generator:1.0 ./mail_tool
 -> mail_directory (packages): 1
 -> mail_to: user@mail.org
 -> mail_from: *@antispam.test.suite
--> mail_server: 172.17.17.100
+-> mail_server: 172.17.32.3
 ==========================================
 
 Do you want to start? [Confirm]
