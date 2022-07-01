@@ -11,7 +11,7 @@ The goal of the project is to provide an automate way to send a bunch of `*.eml`
 docker run \
     -v </path/to/mail>:/home/user/mail_examples/your_package:ro \
     -it drmatthew/mail-generator:latest \
-    ./mail_tools/send_mail.bash ./mail_examples/ <mail_to> <mail_server>
+    /home/user/mail_examples/ <mail_to> <mail_server>
 ```
 
 where:
@@ -24,7 +24,9 @@ where:
 
 That's how it looks like:
 ```
-matvey@matvey-pc:~$ docker run --rm -it drmatthew/mail-generator:1.0 ./mail_tools/send_mail.bash ./mail_examples/ user@mail.org 172.17.32.3 
+matvey@matvey-pc:~$ docker run -it drmatthew/mail-generator:latest \
+> /home/user/mail_examples/ user@mail.org 172.17.32.3 
+
 ================ Overview ================
 -> mail_directory: /home/user/mail_examples
 -> mail_directory (packages): 1

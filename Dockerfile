@@ -11,4 +11,4 @@ WORKDIR /home/user
 
 COPY --chown=user . .
 
-CMD ["bash"]
+ENTRYPOINT ["./mail_tools/send_mail.bash"]
